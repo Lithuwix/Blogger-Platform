@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/Blogger-Platform/static/css/main.073c9b0a.css",
-    "main.js": "/Blogger-Platform/static/js/main.fc428df0.js",
-    "static/js/787.54a14aa8.chunk.js": "/Blogger-Platform/static/js/787.54a14aa8.chunk.js",
-    "static/media/logo.svg": "/Blogger-Platform/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/Blogger-Platform/static/css/main.abdf48fb.css",
+    "main.js": "/Blogger-Platform/static/js/main.92f4425a.js",
+    "static/js/787.b2afa05d.chunk.js": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js",
     "index.html": "/Blogger-Platform/index.html",
-    "main.073c9b0a.css.map": "/Blogger-Platform/static/css/main.073c9b0a.css.map",
-    "main.fc428df0.js.map": "/Blogger-Platform/static/js/main.fc428df0.js.map",
-    "787.54a14aa8.chunk.js.map": "/Blogger-Platform/static/js/787.54a14aa8.chunk.js.map"
+    "main.abdf48fb.css.map": "/Blogger-Platform/static/css/main.abdf48fb.css.map",
+    "main.92f4425a.js.map": "/Blogger-Platform/static/js/main.92f4425a.js.map",
+    "787.b2afa05d.chunk.js.map": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.fc428df0.js"
+    "static/css/main.abdf48fb.css",
+    "static/js/main.92f4425a.js"
   ]
 }
