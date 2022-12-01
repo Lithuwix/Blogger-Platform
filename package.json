@@ -1,5 +1,6 @@
 {
   "name": "blogger_platform",
+  "homepage": "https://lithuwix.github.io/Blogger-Platform",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

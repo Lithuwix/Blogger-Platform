@@ -1,0 +1,10 @@
+.container {
+    background: #FCFBFB;
+    box-shadow: 0 5px 20px rgba(29, 33, 38, 0.03), 0 1px 2px rgba(29, 33, 38, 0.1);
+}
+
+.main_title {
+    padding: 20px 70px;
+    font-size: 2rem;
+    font-weight: 700;
+}
