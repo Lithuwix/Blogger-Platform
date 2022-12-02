@@ -1,5 +1,5 @@
 import {AppThunk} from "../../../store/store";
-import {testsAPI} from "../../../api/api";
+// import {testsAPI} from "../../../api/api";
 
 const initialState: any = []
 
@@ -26,14 +26,12 @@ export const getBlogsDataAC = (data: any) => {
 // thunks
 export const getBlogsTC = (): AppThunk => async (dispatch) => {
     try {
-        const res = await testsAPI.getTestBlogsData()
+        // const res = await testsAPI.getTestBlogsData()
         console.log('ok')
-        console.log(res)
-        dispatch(getBlogsDataAC(res))
+        // console.log(res)
+        // dispatch(getBlogsDataAC(res))
     } catch (e: any) {
-        console.log('catch')
-    } finally {
-        console.log('finally')
+        console.log(e)
     }
 }
 
