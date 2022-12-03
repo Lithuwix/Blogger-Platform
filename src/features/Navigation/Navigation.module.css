@@ -1,0 +1,35 @@
+.container {
+    width: 18%;
+    position: relative;
+    background-color: #FCFBFB;
+    font-size: 1.5rem;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: -8px 29px 22px -27px rgb(34 60 80 / 5%) inset;
+}
+
+.nav_item {
+    margin-bottom: 20px;
+}
+
+.icon_with_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_title_blogs {
+    padding: 0 0 3px 8px;
+}
+
+.blogs_active_title {
+    color: #F8346B;
+}
+
+.nav_title_posts {
+    padding: 0 0 10px 6px;
+}
+
+.posts_active_title {
+    color: #F8346B;
+}

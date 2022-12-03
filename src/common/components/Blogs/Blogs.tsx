@@ -1,25 +1,37 @@
 import React, {useEffect} from 'react';
 import s from './Blogs.module.css'
-import {useAppSelector} from "../../hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
 import {Blog} from "./Blog/Blog";
+import {getBlogsTC} from "../../../reducers/blogs-reducer";
 
 export const Blogs = () => {
 
-    // const title = useAppSelector((state) => state.blogs.blogTitle)
+    const blogs = useAppSelector((state) => state.blogs.blogItems)
+    const dispatch = useAppDispatch()
 
-    useEffect( () => {
-        console.log('HELLO')
-
+    useEffect(() => {
+        dispatch(getBlogsTC())
     }, [])
 
     return (
         <div className={s.container}>
-            -- blogs
-            {/*title = {title}*/}
-
-            <Blog/>
-
+            <h2 className={s.title}>Blogs</h2>
+            <hr className={s.line}/>
+            <div className={s.blogs_items_container}>
+                {blogs.map((b) => {
+                    return (
+                        <Blog
+                            key={b.id}
+                            description={b.description}
+                            id={b.id}
+                            name={b.name}
+                            createdAt={b.createdAt}
+                            websiteUrl={b.websiteUrl}
+                        />
+                    )
+                })}
+            </div>
         </div>
     );
 };

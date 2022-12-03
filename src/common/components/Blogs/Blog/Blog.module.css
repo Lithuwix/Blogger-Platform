@@ -1,0 +1,30 @@
+.wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.container {
+    height: 160px;
+    display: flex;
+}
+
+.line {
+    margin-top: 15px;
+    height: 2px;
+    border: 0;
+    box-shadow: inset 0 0 1px 1px rgba(59, 54, 54, 0.1);
+    border-radius: 2px;
+}
+
+.blog_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 156px;
+    width: 156px;
+    border-radius: 100px;
+    border: 2px solid rgba(180, 180, 180, 0.32);
+}
+.blog_info{
+    margin: 0 0 0 12px;
+}
