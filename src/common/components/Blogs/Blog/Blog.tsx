@@ -3,7 +3,6 @@ import s from "./Blog.module.css"
 import {blogItemType} from "../../../../reducers/blogs-reducer";
 import {SvgSelector} from "../../svgSelector/svgSelector";
 
-
 export const Blog = (props: blogItemType) => {
     return (
         <div className={s.wrapper}>

@@ -3,7 +3,7 @@ import './index.css';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {App} from './app/App';
 import {Provider} from "react-redux";
 import {store} from "./store/store";
@@ -13,9 +13,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
             <App/>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>
 );
 
