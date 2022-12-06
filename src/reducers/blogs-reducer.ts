@@ -1,19 +1,20 @@
 import {AppThunk} from "../store/store";
-import {blogsAPI, ResponseBlogsType} from "../api/api";
 import {AxiosResponse} from "axios";
+import {BlogItemType, blogsAPI, ResponseBlogsType} from "../api/api";
+import {setAppStatusAC} from "./app-reducer";
 
-const initialState: initialStateType = {
+const initialState: ResponseBlogsType = {
     pagesCount: 0,
     page: 0,
     pageSize: 0,
     totalCount: 0,
-    blogItems: []
+    items: []
 }
 
-export const blogsReducer = (state: initialAppStateType = initialState, action: BlogsActionType): initialAppStateType => {
+export const blogsReducer = (state: initialAppStateType = initialState, action: BlogsActionsType): initialAppStateType => {
     switch (action.type) {
         case 'SET-BLOGS': {
-            return {...state, blogItems: [...action.payload.items]}
+            return {...state, items: [...action.payload.blogs]}
         }
         default:
             return state
@@ -21,10 +22,10 @@ export const blogsReducer = (state: initialAppStateType = initialState, action: 
 }
 
 // action creators
-export const setBlogsDataAC = (data: ResponseBlogsType) => {
+export const setBlogsDataAC = (blogs: BlogItemType[]) => {
     return {
         type: 'SET-BLOGS',
-        payload: data
+        payload: {blogs}
     } as const
 }
 
@@ -32,32 +33,22 @@ export const setBlogsDataAC = (data: ResponseBlogsType) => {
 export const getBlogsTC = (): AppThunk => async (dispatch) => {
     try {
         const res: AxiosResponse<ResponseBlogsType> = await blogsAPI.getBlogsData()
-        dispatch(setBlogsDataAC(res.data))
-    } catch (e) {
+        dispatch(setAppStatusAC('loading'))
+        dispatch(setBlogsDataAC(res.data.items))
+    }
+    catch (e) {
         console.log(e)
+    }
+    finally {
+        dispatch(setAppStatusAC('idle'))
+        // dispatch(setInitializedAppAC(false))
+        // dispatch(setInitializedAppAC(true))
     }
 }
 
 // types
 type initialAppStateType = typeof initialState
-export type BlogsActionType =
+
+export type BlogsActionsType =
     | ReturnType<typeof setBlogsDataAC>
-//   |  >>> !!
-
-
-
-type initialStateType = {
-    pagesCount: number
-    page: number
-    pageSize: number
-    totalCount: number
-    blogItems: blogItemType[]
-}
-
-export type blogItemType = {
-    id: string
-    name: string
-    websiteUrl: string
-    description: string
-    createdAt: string
-}
+//   |  >>> !

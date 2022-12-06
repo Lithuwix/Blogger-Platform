@@ -1,9 +1,9 @@
 import React from 'react';
 import s from "./Blog.module.css"
-import {blogItemType} from "../../../../reducers/blogs-reducer";
 import {SvgSelector} from "../../svgSelector/svgSelector";
+import {BlogItemType} from "../../../../api/api";
 
-export const Blog = (props: blogItemType) => {
+export const Blog = (props: BlogItemType) => {
     return (
         <div className={s.wrapper}>
             <div className={s.container}>

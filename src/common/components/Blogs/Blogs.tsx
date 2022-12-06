@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import s from './Blogs.module.css'
+
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
 import {Blog} from "./Blog/Blog";
@@ -7,7 +8,7 @@ import {getBlogsTC} from "../../../reducers/blogs-reducer";
 
 export const Blogs = () => {
 
-    const blogs = useAppSelector((state) => state.blogs.blogItems)
+    const blogs = useAppSelector((state) => state.blogs.items)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

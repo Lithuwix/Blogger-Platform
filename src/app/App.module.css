@@ -1,3 +1,16 @@
 .app_container {
     display: flex;
 }
+
+.progress_bar_container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress_bar_container span {
+    height: 80px!important;
+    width: 80px!important;
+    color: rgba(155, 13, 148, 0.53);
+}
