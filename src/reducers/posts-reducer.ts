@@ -1,14 +1,19 @@
 import {AppThunk} from "../store/store";
-import {postsAPI} from "../api/api";
+import {PostItemType, postsAPI, ResponsePostsType} from "../api/api";
+import {AxiosResponse} from "axios";
 
-const initialState: initialStateType = {
-
+const initialState: ResponsePostsType = {
+    pagesCount: 0,
+    page: 0,
+    pageSize: 0,
+    totalCount: 0,
+    items: []
 }
 
-export const postsReducer = (state: initialAppStateType = initialState, action: BlogsActionType): initialAppStateType => {
+export const postsReducer = (state: initialAppStateType = initialState, action: PostsActionsType): initialAppStateType => {
     switch (action.type) {
-        case 'ALL': {
-            return state
+        case 'SET-POSTS': {
+            return {...state, items: action.payload.posts}
         }
         default:
             return state
@@ -16,9 +21,9 @@ export const postsReducer = (state: initialAppStateType = initialState, action: 
 }
 
 // action creators
-export const setPostsDataAC = (posts: any) => {
+export const setPostsDataAC = (posts: PostItemType[]) => {
     return {
-        type: 'ALL',
+        type: 'SET-POSTS',
         payload: {posts}
     } as const
 }
@@ -26,8 +31,8 @@ export const setPostsDataAC = (posts: any) => {
 // thunks
 export const getPostsTC = (): AppThunk => async (dispatch) => {
     try {
-        const res: any = await postsAPI.getPostsData()
-        // dispatch(setPostsDataAC(res.data))
+        const res: AxiosResponse<ResponsePostsType> = await postsAPI.getPostsData()
+        dispatch(setPostsDataAC(res.data.items))
     } catch (e) {
         console.log(e)
     }
@@ -35,12 +40,6 @@ export const getPostsTC = (): AppThunk => async (dispatch) => {
 
 // types
 type initialAppStateType = typeof initialState
-export type BlogsActionType =
+export type PostsActionsType =
     | ReturnType<typeof setPostsDataAC>
 //   |  >>> !!
-
-
-
-type initialStateType = {
-
-}

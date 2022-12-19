@@ -1,0 +1,11 @@
+.post_wrapper {
+    width: 300px;
+    height: 300px;  /* */
+    border: 1px solid pink;
+}
+
+.post_info {
+    display: flex;
+    border: 1px solid #2db5b9;
+}
+

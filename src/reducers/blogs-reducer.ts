@@ -35,14 +35,13 @@ export const getBlogsTC = (): AppThunk => async (dispatch) => {
         const res: AxiosResponse<ResponseBlogsType> = await blogsAPI.getBlogsData()
         dispatch(setAppStatusAC('loading'))
         dispatch(setBlogsDataAC(res.data.items))
+        dispatch(setAppStatusAC('idle'))
     }
     catch (e) {
         console.log(e)
     }
     finally {
-        dispatch(setAppStatusAC('idle'))
-        // dispatch(setInitializedAppAC(false))
-        // dispatch(setInitializedAppAC(true))
+        console.log(1)
     }
 }
 
