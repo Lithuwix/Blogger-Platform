@@ -31,17 +31,14 @@ export const setBlogsDataAC = (blogs: BlogItemType[]) => {
 
 // thunks
 export const getBlogsTC = (): AppThunk => async (dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     try {
         const res: AxiosResponse<ResponseBlogsType> = await blogsAPI.getBlogsData()
-        dispatch(setAppStatusAC('loading'))
         dispatch(setBlogsDataAC(res.data.items))
-        dispatch(setAppStatusAC('idle'))
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
-    }
-    finally {
-        console.log(1)
+    } finally {
+        dispatch(setAppStatusAC('idle'))
     }
 }
 

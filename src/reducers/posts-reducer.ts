@@ -1,6 +1,7 @@
 import {AppThunk} from "../store/store";
 import {PostItemType, postsAPI, ResponsePostsType} from "../api/api";
 import {AxiosResponse} from "axios";
+import {setAppStatusAC} from "./app-reducer";
 
 const initialState: ResponsePostsType = {
     pagesCount: 0,
@@ -30,11 +31,14 @@ export const setPostsDataAC = (posts: PostItemType[]) => {
 
 // thunks
 export const getPostsTC = (): AppThunk => async (dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     try {
         const res: AxiosResponse<ResponsePostsType> = await postsAPI.getPostsData()
         dispatch(setPostsDataAC(res.data.items))
     } catch (e) {
         console.log(e)
+    } finally {
+        dispatch(setAppStatusAC('idle'))
     }
 }
 
