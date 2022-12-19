@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Post.module.css'
-import {SvgSelector} from "../../svgSelector/svgSelector";
+import {SvgSelector} from "../../../../features/svgSelector/svgSelector";
 
 type PostPropsType = {
     title: string

@@ -1,7 +1,7 @@
 import {AppThunk} from "../store/store";
 
 const initialState: InitialStateType = {
-    appStatus: 'loading',
+    appStatus: 'idle',
     isInitialized: false,
     // error: null as string | null
 }

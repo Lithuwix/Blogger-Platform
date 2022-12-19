@@ -2,13 +2,16 @@ import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import s from './Navigation.module.css'
-import './Navigation.css'
 
-import {SvgSelector} from "../../common/components/svgSelector/svgSelector";
+import {SvgSelector} from "../svgSelector/svgSelector";
 
-export const Navigation = () => {
+type NavigationPropsType = {
+    activeLink: 'blogs' | 'posts'
+}
 
-    const [activeLink, setActiveLink] = useState<'blogs' | 'posts'>('blogs')
+export const Navigation = (props: NavigationPropsType) => {
+
+    const [activeLink, setActiveLink] = useState<'blogs' | 'posts'>(props.activeLink)
 
     const setActiveBlogsLinkHandler = () => {
         setActiveLink('blogs')

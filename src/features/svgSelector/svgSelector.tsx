@@ -60,7 +60,7 @@ export const SvgSelector = (props: SvgSelectorPropsType) => {
             )
         }
         default:
-            return <svg></svg>
+            return <svg/>
     }
 }
 

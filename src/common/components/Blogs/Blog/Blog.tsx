@@ -1,14 +1,16 @@
 import React from 'react';
 import s from "./Blog.module.css"
 
-import {SvgSelector} from "../../svgSelector/svgSelector";
+import {SvgSelector} from "../../../../features/svgSelector/svgSelector";
 import {BlogItemType} from "../../../../api/api";
 
 export const Blog = (props: BlogItemType) => {
     return (
         <div className={s.wrapper}>
             <div className={s.container}>
-                <div className={s.blog_img}><SvgSelector svgName='photo'></SvgSelector> </div>
+                <div className={s.blog_img}>
+                    <SvgSelector svgName='photo'/>
+                </div>
                 <div className={s.blog_info}>
                     <p>{props.name}</p>
                     <p>WebSite: {props.websiteUrl}</p>
