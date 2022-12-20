@@ -5,12 +5,14 @@ import {Navigate, Route, Routes} from 'react-router-dom';
 
 import {useAppDispatch, useAppSelector} from "../common/hooks/hooks";
 
+import {Header} from "../features/Header/Header";
 import {Login} from "../features/Auth/Login/Login";
 import {Register} from "../features/Auth/Register/Register";
-import {Header} from "../features/Header/Header";
+import {RegistrationConfirmation} from "../features/Auth/RegistrationConfirmation/RegistrationConfirmation";
 import {Blogs} from "../common/components/Blogs/Blogs";
 import {Posts} from "../common/components/Posts/Posts";
 import {Error404} from "../features/Error404/Error404";
+
 import {initializeAppTC} from "../reducers/app-reducer";
 
 import LinearProgress from '@mui/material/LinearProgress';
@@ -43,6 +45,7 @@ export const App = () => {
                     <Route path={'/'} element={<Navigate to={'/login'}/>}/>
                     <Route path={'/login'} element={<Login/>}/>
                     <Route path={'/register'} element={<Register/>}/>
+                    <Route path={'/registration-confirmation'} element={<RegistrationConfirmation/>}/>
                     <Route path={'/blogs'} element={<Blogs/>}/>
                     <Route path={'/posts'} element={<Posts/>}/>
 

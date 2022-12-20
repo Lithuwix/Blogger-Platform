@@ -1,9 +1,20 @@
 .wrapper {
+    user-select: none;
     display: flex;
     width: 100%;
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin: 45px 50px 0 0;
+    margin: 70px 50px 0 0;
+}
+
+.wrapper h1 {
+    color: #F8346B;
+}
+.wrapper h2 {
+    margin: 0;
+    padding-left: 8px;
+    font-weight: 300;
+    color: rgba(52, 13, 24, 0.63);
 }

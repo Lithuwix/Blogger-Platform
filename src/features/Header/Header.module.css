@@ -9,6 +9,6 @@
 }
 
 .main_title::selection {
-    background-color: rgba(255, 96, 125, 0.73);
+    background-color: rgba(255, 96, 125, 0.39);
     color: white;
 }

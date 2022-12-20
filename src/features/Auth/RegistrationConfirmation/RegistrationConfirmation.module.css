@@ -1,0 +1,31 @@
+.wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pic {
+    height: 300px;
+    width: 432px;
+    background: url("/src/assets/images/bro.png") no-repeat;
+}
+
+.title {
+    text-align: center;
+    margin: 100px 0 0;
+    color: #0D0C0B;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.btn {
+    width: 10vw;
+    height: 50px;
+    font-size: 18px;
+    margin: 55px 0 70px !important;
+    text-transform: none !important;
+    background-color: #F8346B !important;
+    color: white !important;
+    border-radius: 2px !important;
+}
