@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Blogger-Platform/static/css/main.241916b1.css",
+    "main.css": "/Blogger-Platform/static/css/main.4a1e4e4d.css",
     "main.js": "/Blogger-Platform/static/js/main.2527e64e.js",
     "static/js/787.b2afa05d.chunk.js": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js",
     "static/media/rafiki.png": "/Blogger-Platform/static/media/rafiki.d46a9aaf46dca6773cbe.png",
     "static/media/bro.png": "/Blogger-Platform/static/media/bro.c43ba54fe8ed1e97b74e.png",
     "index.html": "/Blogger-Platform/index.html",
-    "main.241916b1.css.map": "/Blogger-Platform/static/css/main.241916b1.css.map",
+    "main.4a1e4e4d.css.map": "/Blogger-Platform/static/css/main.4a1e4e4d.css.map",
     "main.2527e64e.js.map": "/Blogger-Platform/static/js/main.2527e64e.js.map",
     "787.b2afa05d.chunk.js.map": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.241916b1.css",
+    "static/css/main.4a1e4e4d.css",
     "static/js/main.2527e64e.js"
   ]
 }
