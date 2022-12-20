@@ -6,14 +6,14 @@ import {useFormik} from "formik";
 
 import {NavLink} from "react-router-dom";
 
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import InputLabel from '@mui/material/InputLabel';
 
 type FormikErrorType = {
     email?: string

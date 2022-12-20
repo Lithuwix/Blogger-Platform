@@ -13,15 +13,14 @@ export const RegistrationConfirmation = () => {
                 Congratulations!<br/>
                 Your email has been confirmed
             </h1>
-            <NavLink to={'/login'}>
-                <Button
-                    className={s.btn}
-                    variant={'text'}
-                    type={"submit"}
-                >
+            <Button
+                className={s.btn}
+                variant={'text'}
+            >
+                <NavLink to={'/login'}>
                     Sign In
-                </Button>
-            </NavLink>
+                </NavLink>
+            </Button>
             <div className={s.pic}/>
         </div>
     );

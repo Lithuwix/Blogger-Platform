@@ -14,6 +14,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputLabel from '@mui/material/InputLabel';
+import {SendEmailInfoModal} from "../../Modals/SendEmailInfoModal/SendEmailInfoModal";
 
 type FormikErrorType = {
     userName?: string
@@ -22,6 +23,10 @@ type FormikErrorType = {
 }
 
 export const Register = () => {
+
+    const [openModal, setOpenModal] = React.useState(false);
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -40,7 +45,7 @@ export const Register = () => {
         validate: values => {
             const errors: FormikErrorType = {}
 
-            if(!values.userName) {
+            if (!values.userName) {
                 errors.userName = 'required'
             }
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -55,98 +60,103 @@ export const Register = () => {
             return errors
         },
         onSubmit: values => {           // handleSubmit
-            // dispatch(loginTC(values))
+                                        // dispatch(loginTC(values))
+            handleOpen()
             formik.resetForm();
         },
     });
 
     return (
-        <div className={s.container}>
-            <div className={s.login_wrapper}>
+        <>
+            <SendEmailInfoModal openModal={openModal} handleClose={handleClose}/>
 
-                <h2 className={s.main_title}>Sign Up</h2>
+            <div className={s.container}>
+                <div className={s.login_wrapper}>
 
-                <form onSubmit={formik.handleSubmit}>
+                    <h2 className={s.main_title}>Sign Up</h2>
 
-                    <FormControl className={s.input} variant="standard">
-                        <InputLabel
-                            className={s.input_label}
-                            htmlFor="standard-adornment-username">
-                            Username
-                        </InputLabel>
-                        <Input
-                            {...formik.getFieldProps('userName')}
-                            id="standard-adornment-username"
-                            type='text'
-                        />
-                    </FormControl>
+                    <form onSubmit={formik.handleSubmit}>
 
-                    <div className={s.error_titles}>
-                        {formik.touched.userName && formik.errors.userName && formik.errors.userName}
-                    </div>
+                        <FormControl className={s.input} variant="standard">
+                            <InputLabel
+                                className={s.input_label}
+                                htmlFor="standard-adornment-username">
+                                Username
+                            </InputLabel>
+                            <Input
+                                {...formik.getFieldProps('userName')}
+                                id="standard-adornment-username"
+                                type='text'
+                            />
+                        </FormControl>
 
-                    <FormControl className={s.input} variant="standard">
-                        <InputLabel
-                            className={s.input_label}
-                            htmlFor="standard-adornment-email">
-                            Email
-                        </InputLabel>
-                        <Input
-                            {...formik.getFieldProps('email')}
-                            id="standard-adornment-email"
-                            type='text'
-                        />
-                    </FormControl>
+                        <div className={s.error_titles}>
+                            {formik.touched.userName && formik.errors.userName && formik.errors.userName}
+                        </div>
 
-                    <div className={s.error_titles}>
-                        {formik.touched.email && formik.errors.email && formik.errors.email}
-                    </div>
+                        <FormControl className={s.input} variant="standard">
+                            <InputLabel
+                                className={s.input_label}
+                                htmlFor="standard-adornment-email">
+                                Email
+                            </InputLabel>
+                            <Input
+                                {...formik.getFieldProps('email')}
+                                id="standard-adornment-email"
+                                type='text'
+                            />
+                        </FormControl>
 
-                    <FormControl className={s.input} variant="standard">
-                        <InputLabel className={s.input_label}
-                                    htmlFor="standard-adornment-password">Password</InputLabel>
-                        <Input
-                            {...formik.getFieldProps('password')}
-                            id="standard-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
+                        <div className={s.error_titles}>
+                            {formik.touched.email && formik.errors.email && formik.errors.email}
+                        </div>
 
-                    <div className={s.error_titles}>
-                        {formik.touched.password && formik.errors.password && formik.errors.password}
-                    </div>
+                        <FormControl className={s.input} variant="standard">
+                            <InputLabel className={s.input_label}
+                                        htmlFor="standard-adornment-password">Password</InputLabel>
+                            <Input
+                                {...formik.getFieldProps('password')}
+                                id="standard-adornment-password"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
 
-                    <Button
-                        className={s.submit_btn}
-                        variant={'text'}
-                        type={"submit"}
-                    >
-                        Sign Up
-                    </Button>
+                        <div className={s.error_titles}>
+                            {formik.touched.password && formik.errors.password && formik.errors.password}
+                        </div>
 
-                    <div className={s.helper_text}>
-                        Already a member?
-                    </div>
-                    <NavLink to={'/login'}>
-                        <div className={s.redirect_text}>Sign In</div>
-                    </NavLink>
+                        <Button
+                            className={s.submit_btn}
+                            variant={'text'}
+                            type={"submit"}
+                        >
+                            Sign Up
+                        </Button>
 
-                </form>
+                        <div className={s.helper_text}>
+                            Already a member?
+                        </div>
+                        <NavLink to={'/login'}>
+                            <div className={s.redirect_text}>Sign In</div>
+                        </NavLink>
 
+                    </form>
+
+                </div>
+                <div className={s.login_pic}/>
             </div>
-            <div className={s.login_pic}/>
-        </div>
+        </>
     );
 };
 

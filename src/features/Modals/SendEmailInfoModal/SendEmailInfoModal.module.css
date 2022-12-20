@@ -1,0 +1,27 @@
+.btn_in_modal {
+    box-sizing: border-box;
+    width: 140px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #F8346B !important;
+    border-radius: 2px !important;
+    font-size: 15px !important;
+    color: white !important;
+    float: right;
+}
+
+.close_modal_btn {
+    padding-top: 10px;
+    color: black !important;
+    float: right;
+}
+
+.close_modal_btn:hover {
+    background-color: white !important;
+}
+
+.modalTitle {
+    margin-bottom: 30px;
+    color: rgba(121, 116, 118, 0.62);
+    font-size: 25px;
+}
