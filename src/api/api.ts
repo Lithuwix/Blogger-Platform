@@ -1,8 +1,14 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 export const instance = axios.create({
     baseURL: 'https://blogs-black.vercel.app'
 })
+
+export const authAPI = {
+    login(data: LoginParamsType) {
+        return instance.post<LoginParamsType, AxiosResponse>('/auth/login', data)
+    }
+}
 
 export const blogsAPI = {
     getBlogsData() {
@@ -14,6 +20,16 @@ export const postsAPI = {
     getPostsData() {
         return instance.get('/posts')
     }
+}
+
+
+//types auth
+type LoginParamsType = {
+    loginOrEmail: string
+    password: string
+}
+export type ResponseAuthType = {
+
 }
 
 // types blogs

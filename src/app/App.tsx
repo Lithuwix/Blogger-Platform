@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+
 import s from './App.module.css';
 
 import {Navigate, Route, Routes} from 'react-router-dom';
@@ -22,6 +23,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 export const App = () => {
 
     const dispatch = useAppDispatch()
+
     const appStatus = useAppSelector((state) => state.app.appStatus)
     const appInitialized = useAppSelector((state) => state.app.isInitialized)
 
@@ -44,7 +46,7 @@ export const App = () => {
             <div className={s.app_container}>
 
                 <Routes>
-                    <Route path={'/'} element={<Navigate to={'/register'}/>}/>
+                    <Route path={'/'} element={<Navigate to={'/login'}/>}/>
                     <Route path={'/login'} element={<Login/>}/>
                     <Route path={'/register'} element={<Register/>}/>
                     <Route path={'/registration-email-resending'} element={<RegistrationEmailResending/>}/>

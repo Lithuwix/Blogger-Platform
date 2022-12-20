@@ -20,6 +20,7 @@ export const appReducer = (state = initialState, action: AppActionsType): Initia
     }
 }
 
+// action creators
 export const setInitializedAppAC = (isInitialized: boolean) => {
     return {
         type: 'SET-APP-INITIALIZED',

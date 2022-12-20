@@ -3,8 +3,11 @@ import React from 'react';
 import s from './Login.module.css'
 
 import {useFormik} from "formik";
+import {useAppDispatch, useAppSelector} from "../../../common/hooks/hooks";
 
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
+
+import {loginTC} from "../../../reducers/auth-reducer";
 
 import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
@@ -16,14 +19,17 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 type FormikErrorType = {
-    email?: string
+    loginOrEmail?: string
     password?: string
-    rememberMe?: boolean
 }
 
 export const Login = () => {
 
     const [showPassword, setShowPassword] = React.useState(false);
+
+    const dispatch = useAppDispatch()
+
+    const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -33,25 +39,30 @@ export const Login = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: '',
-            password: '',
-            rememberMe: false
+            loginOrEmail: '',
+            password: ''
         },
         validate: values => {
             const errors: FormikErrorType = {}
-            if (!values.email) {
-                errors.email = 'required'
+            if (!values.loginOrEmail) {
+                errors.loginOrEmail = 'required'
             }
-            if (values.password.length < 8) {
-                errors.password = 'must be more than 7 symbols'
+            if (values.password.length < 5) {
+                errors.password = 'must be more than 4 symbols'
             }
             return errors
         },
         onSubmit: values => {           // handleSubmit
-            // dispatch(loginTC(values))
+                                        // dispatch(loginTC(values))
+                                        // const userData = {loginOrEmail: values.emailOrUserName,password: values.password}
+            dispatch(loginTC(values))
             formik.resetForm();
         },
     });
+
+    if (isLoggedIn) {
+        return <Navigate to={'/blogs'}/>
+    }
 
     return (
         <div className={s.container}>
@@ -64,23 +75,26 @@ export const Login = () => {
                     <FormControl className={s.input} variant="standard">
                         <InputLabel
                             className={s.input_label}
-                            htmlFor="standard-adornment-email-username">
+                            htmlFor="standard-adornment-email-username"
+                        >
                             Email or Username
                         </InputLabel>
                         <Input
-                            {...formik.getFieldProps('email')}
+                            {...formik.getFieldProps('loginOrEmail')}
                             id="standard-adornment-email-username"
                             type='text'
                         />
                     </FormControl>
 
                     <div className={s.error_titles}>
-                        {formik.touched.email && formik.errors.email && formik.errors.email}
+                        {formik.touched.loginOrEmail && formik.errors.loginOrEmail && formik.errors.loginOrEmail}
                     </div>
 
                     <FormControl className={s.input} variant="standard">
                         <InputLabel className={s.input_label}
-                                    htmlFor="standard-adornment-password">Password</InputLabel>
+                                    htmlFor="standard-adornment-password">
+                            Password
+                        </InputLabel>
                         <Input
                             {...formik.getFieldProps('password')}
                             id="standard-adornment-password"

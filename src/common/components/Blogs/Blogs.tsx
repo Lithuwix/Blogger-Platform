@@ -4,8 +4,9 @@ import s from './Blogs.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
 import {Blog} from "./Blog/Blog";
-import {getBlogsTC} from "../../../reducers/blogs-reducer";
 import {Navigation} from "../../../features/Navigation/Navigation";
+
+import {getBlogsTC} from "../../../reducers/blogs-reducer";
 
 export const Blogs = () => {
 

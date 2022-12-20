@@ -1,6 +1,6 @@
 import {AppThunk} from "../store/store";
 import {AxiosResponse} from "axios";
-import {BlogItemType, blogsAPI, ResponseBlogsType} from "../api/api";
+import {blogsAPI, BlogItemType, ResponseBlogsType} from "../api/api";
 import {setAppStatusAC} from "./app-reducer";
 
 const initialState: ResponseBlogsType = {

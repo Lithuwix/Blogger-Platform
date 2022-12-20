@@ -17,3 +17,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+input:-webkit-autofill {
+  font-size: 17px;
+  -webkit-box-shadow: inset 0 0 0 50px white;
+}
