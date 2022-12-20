@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/Blogger-Platform/static/css/main.4a1e4e4d.css",
-    "main.js": "/Blogger-Platform/static/js/main.2527e64e.js",
+    "main.css": "/Blogger-Platform/static/css/main.25e56bdb.css",
+    "main.js": "/Blogger-Platform/static/js/main.20379827.js",
     "static/js/787.b2afa05d.chunk.js": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js",
     "static/media/rafiki.png": "/Blogger-Platform/static/media/rafiki.d46a9aaf46dca6773cbe.png",
+    "static/media/rafiki2.png": "/Blogger-Platform/static/media/rafiki2.f96627988a6d5f6e5f17.png",
     "static/media/bro.png": "/Blogger-Platform/static/media/bro.c43ba54fe8ed1e97b74e.png",
     "index.html": "/Blogger-Platform/index.html",
-    "main.4a1e4e4d.css.map": "/Blogger-Platform/static/css/main.4a1e4e4d.css.map",
-    "main.2527e64e.js.map": "/Blogger-Platform/static/js/main.2527e64e.js.map",
+    "main.25e56bdb.css.map": "/Blogger-Platform/static/css/main.25e56bdb.css.map",
+    "main.20379827.js.map": "/Blogger-Platform/static/js/main.20379827.js.map",
     "787.b2afa05d.chunk.js.map": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a1e4e4d.css",
-    "static/js/main.2527e64e.js"
+    "static/css/main.25e56bdb.css",
+    "static/js/main.20379827.js"
   ]
 }
