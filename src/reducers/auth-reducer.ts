@@ -1,7 +1,6 @@
 import {AppThunk} from "../store/store";
 import {setAppStatusAC} from "./app-reducer";
-import {AxiosResponse} from "axios";
-import {authAPI, ResponseAuthType} from "../api/api";
+import {authAPI} from "../api/api";
 import {errorHandlerUtil} from "../common/utils/errors-utils";
 
 const initialState: InitialStateType = {
@@ -12,13 +11,13 @@ const initialState: InitialStateType = {
 
 export const authReducer = (state = initialState, action: AuthActionsType): InitialStateType => {
     switch (action.type) {
-        case 'SET-IS-LOGGED-IN' : {
+        case 'AUTH/SET-IS-LOGGED-IN' : {
             return {...state, isLoggedIn: action.payload.isLoggedIn}
         }
-        case 'SET-APP-ERROR': {
+        case 'AUTH/SET-APP-ERROR': {
             return {...state, appErrorMessage: action.payload.errorMessage}
         }
-        case 'SET-APP-MESSAGE-FOR-USER': {
+        case 'AUTH/SET-APP-MESSAGE-FOR-USER': {
             return {...state, appMessageForUser: action.payload.message}
         }
         default: {
@@ -30,19 +29,19 @@ export const authReducer = (state = initialState, action: AuthActionsType): Init
 // action creators
 export const setIsLoggedInOutAC = (isLoggedIn: boolean) => {
     return {
-        type: 'SET-IS-LOGGED-IN',
+        type: 'AUTH/SET-IS-LOGGED-IN',
         payload: {isLoggedIn}
     } as const
 }
 export const setAppErrorAC = (errorMessage: string) => {
     return {
-        type: 'SET-APP-ERROR',
+        type: 'AUTH/SET-APP-ERROR',
         payload: {errorMessage}
     } as const
 }
 export const setAppMessageForUserAC = (message: string | null) => {
     return {
-        type: 'SET-APP-MESSAGE-FOR-USER',
+        type: 'AUTH/SET-APP-MESSAGE-FOR-USER',
         payload: {message}
     } as const
 }

@@ -17,7 +17,7 @@ import {Blogs} from "../common/components/Blogs/Blogs";
 import {Posts} from "../common/components/Posts/Posts";
 import {Error404} from "../features/Error404/Error404";
 
-import {MessageSnackbar} from "../features/SnackbarMessage/MessageSnackbar";
+import {MessageSnackbar} from "../features/MessageSnackbar/MessageSnackbar";
 
 import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from "@mui/material/CircularProgress";

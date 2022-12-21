@@ -45,18 +45,26 @@ export const Register = () => {
         },
         validate: values => {
             const errors: FormikErrorType = {}
-
+            if (values.userName.length > 10) {
+                errors.userName = 'must be less than 10 symbols'
+            }
+            if (values.userName.length < 4) {
+                errors.userName = 'must be more than 3 symbols'
+            }
             if (!values.userName) {
                 errors.userName = 'required'
             }
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 errors.email = 'Invalid email address'
             }
+            if (values.password.length > 20) {
+                errors.password = 'must be less than 20 symbols'
+            }
+            if (values.password.length < 7) {
+                errors.password = 'must be more than 6 symbols'
+            }
             if (!values.email) {
                 errors.email = 'email required'
-            }
-            if (values.password.length < 8) {
-                errors.password = 'must be more than 7 symbols'
             }
             return errors
         },
@@ -66,6 +74,8 @@ export const Register = () => {
             formik.resetForm();
         },
     });
+
+
 
     return (
         <>

@@ -13,7 +13,7 @@ const initialState: ResponseBlogsType = {
 
 export const blogsReducer = (state: initialAppStateType = initialState, action: BlogsActionsType): initialAppStateType => {
     switch (action.type) {
-        case 'SET-BLOGS': {
+        case 'BLOGS/SET-BLOGS': {
             return {...state, items: [...action.payload.blogs]}
         }
         default:
@@ -24,7 +24,7 @@ export const blogsReducer = (state: initialAppStateType = initialState, action: 
 // action creators
 export const setBlogsDataAC = (blogs: BlogItemType[]) => {
     return {
-        type: 'SET-BLOGS',
+        type: 'BLOGS/SET-BLOGS',
         payload: {blogs}
     } as const
 }

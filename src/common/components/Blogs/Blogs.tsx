@@ -7,15 +7,22 @@ import {Blog} from "./Blog/Blog";
 import {Navigation} from "../../../features/Navigation/Navigation";
 
 import {getBlogsTC} from "../../../reducers/blogs-reducer";
+import {Navigate} from "react-router-dom";
 
 export const Blogs = () => {
 
     const blogs = useAppSelector((state) => state.blogs.items)
+    const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
+
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(getBlogsTC())
     }, [])
+
+    if (!isLoggedIn) {
+        return <Navigate to={'/login'}/>
+    }
 
     return (
         <>

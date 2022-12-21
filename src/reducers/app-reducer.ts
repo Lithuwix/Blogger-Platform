@@ -8,10 +8,10 @@ const initialState: InitialStateType = {
 
 export const appReducer = (state = initialState, action: AppActionsType): InitialStateType => {
     switch (action.type) {
-        case 'SET-APP-INITIALIZED' : {
+        case 'APP/SET-APP-INITIALIZED' : {
             return {...state, isInitialized: action.payload.isInitialized}
         }
-        case 'SET-APP-STATUS' : {
+        case 'APP/SET-APP-STATUS' : {
             return {...state, appStatus: action.payload.appStatus}
         }
         default: {
@@ -23,13 +23,13 @@ export const appReducer = (state = initialState, action: AppActionsType): Initia
 // action creators
 export const setInitializedAppAC = (isInitialized: boolean) => {
     return {
-        type: 'SET-APP-INITIALIZED',
+        type: 'APP/SET-APP-INITIALIZED',
         payload: {isInitialized}
     } as const
 }
 export const setAppStatusAC = (appStatus: 'idle' | 'loading') => {
     return {
-        type: 'SET-APP-STATUS',
+        type: 'APP/SET-APP-STATUS',
         payload: {appStatus}
     } as const
 }

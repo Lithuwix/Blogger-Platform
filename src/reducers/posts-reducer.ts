@@ -13,7 +13,7 @@ const initialState: ResponsePostsType = {
 
 export const postsReducer = (state: initialAppStateType = initialState, action: PostsActionsType): initialAppStateType => {
     switch (action.type) {
-        case 'SET-POSTS': {
+        case 'POSTS/SET-POSTS': {
             return {...state, items: action.payload.posts}
         }
         default:
@@ -24,7 +24,7 @@ export const postsReducer = (state: initialAppStateType = initialState, action: 
 // action creators
 export const setPostsDataAC = (posts: PostItemType[]) => {
     return {
-        type: 'SET-POSTS',
+        type: 'POSTS/SET-POSTS',
         payload: {posts}
     } as const
 }

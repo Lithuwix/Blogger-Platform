@@ -28,9 +28,6 @@ type LoginParamsType = {
     loginOrEmail: string
     password: string
 }
-export type ResponseAuthType = {
-
-}
 
 // types blogs
 export type ResponseBlogsType = {
