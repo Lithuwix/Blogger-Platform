@@ -18,6 +18,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+// import Snackbar from '@mui/material/Snackbar';
+// import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
 type FormikErrorType = {
     loginOrEmail?: string
     password?: string
@@ -47,96 +50,121 @@ export const Login = () => {
             if (!values.loginOrEmail) {
                 errors.loginOrEmail = 'required'
             }
-            if (values.password.length < 5) {
-                errors.password = 'must be more than 4 symbols'
+            if (!values.password) {
+                errors.password = 'required'
             }
             return errors
         },
-        onSubmit: values => {           // handleSubmit
-                                        // dispatch(loginTC(values))
-                                        // const userData = {loginOrEmail: values.emailOrUserName,password: values.password}
+        onSubmit: values => {
             dispatch(loginTC(values))
             formik.resetForm();
         },
     });
+
+    // const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+    //     props,
+    //     ref,
+    // ) {
+    //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    // });
+
+    // const [open, setOpen] = React.useState(false);
+
+    // const handleClickOpenSnackbar = () => {
+    //     setOpen(true);
+    // };
+    //
+    // const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    //     if (reason === 'clickaway') {
+    //         return;
+    //     }
+    //     setOpen(false);
+    // };
 
     if (isLoggedIn) {
         return <Navigate to={'/blogs'}/>
     }
 
     return (
-        <div className={s.container}>
-            <div className={s.login_wrapper}>
+        <>
+            {/*<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>*/}
+            {/*    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>*/}
+            {/*        This is a success message!*/}
+            {/*    </Alert>*/}
+            {/*</Snackbar>*/}
+            <div className={s.container}>
+                <div className={s.login_wrapper}>
 
-                <h2 className={s.main_title}>Sign In</h2>
+                    <h2 className={s.main_title}>Sign In</h2>
 
-                <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit}>
 
-                    <FormControl className={s.input} variant="standard">
-                        <InputLabel
-                            className={s.input_label}
-                            htmlFor="standard-adornment-email-username"
+                        <FormControl className={s.input} variant="standard">
+                            <InputLabel
+                                className={s.input_label}
+                                htmlFor="standard-adornment-email-username"
+                            >
+                                Email or Username
+                            </InputLabel>
+                            <Input
+                                {...formik.getFieldProps('loginOrEmail')}
+                                id="standard-adornment-email-username"
+                                type='text'
+                            />
+                        </FormControl>
+
+                        <div className={s.error_titles}>
+                            {formik.touched.loginOrEmail && formik.errors.loginOrEmail && formik.errors.loginOrEmail}
+                        </div>
+
+                        <FormControl className={s.input} variant="standard">
+                            <InputLabel className={s.input_label}
+                                        htmlFor="standard-adornment-password">
+                                Password
+                            </InputLabel>
+                            <Input
+                                {...formik.getFieldProps('password')}
+                                id="standard-adornment-password"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+
+                        <div className={s.error_titles}>
+                            {formik.touched.password && formik.errors.password && formik.errors.password}
+                        </div>
+
+                        <Button
+                            className={s.submit_btn}
+                            variant={'text'}
+                            type={"submit"}
                         >
-                            Email or Username
-                        </InputLabel>
-                        <Input
-                            {...formik.getFieldProps('loginOrEmail')}
-                            id="standard-adornment-email-username"
-                            type='text'
-                        />
-                    </FormControl>
+                            Sign In
+                        </Button>
 
-                    <div className={s.error_titles}>
-                        {formik.touched.loginOrEmail && formik.errors.loginOrEmail && formik.errors.loginOrEmail}
-                    </div>
+                        <div className={s.helper_text}>
+                            Don't have an account?
+                        </div>
+                        <NavLink to={'/register'}>
+                            <div className={s.redirect_text}>Sign Up</div>
+                        </NavLink>
 
-                    <FormControl className={s.input} variant="standard">
-                        <InputLabel className={s.input_label}
-                                    htmlFor="standard-adornment-password">
-                            Password
-                        </InputLabel>
-                        <Input
-                            {...formik.getFieldProps('password')}
-                            id="standard-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
+                    </form>
 
-                    <div className={s.error_titles}>
-                        {formik.touched.password && formik.errors.password && formik.errors.password}
-                    </div>
-
-                    <Button
-                        className={s.submit_btn}
-                        variant={'text'}
-                        type={"submit"}
-                    >
-                        Sign In
-                    </Button>
-
-                    <div className={s.helper_text}>
-                        Don't have an account?
-                    </div>
-                    <NavLink to={'/register'}>
-                        <div className={s.redirect_text}>Sign Up</div>
-                    </NavLink>
-
-                </form>
-
+                </div>
+                <div className={s.login_pic}/>
             </div>
-            <div className={s.login_pic}/>
-        </div>
+        </>
     );
 };
 
