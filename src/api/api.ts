@@ -1,10 +1,15 @@
 import axios, {AxiosResponse} from "axios";
 
 export const instance = axios.create({
-    baseURL: 'https://blogs-black.vercel.app'
+    baseURL: 'https://blogs-black.vercel.app',
+    // withCredentials: true
 })
 
 export const authAPI = {
+    register(data: RegisterParamsType) {
+        return instance.post<RegisterParamsType, any>('/auth/registration', data)
+    //    /////////////////////////////////// type fix it later plz
+    },
     login(data: LoginParamsType) {
         return instance.post<LoginParamsType, AxiosResponse>('/auth/login', data)
     }
@@ -24,7 +29,12 @@ export const postsAPI = {
 
 
 //types auth
-type LoginParamsType = {
+export type RegisterParamsType = {
+    login: string
+    password: string
+    email: string
+}
+export type LoginParamsType = {
     loginOrEmail: string
     password: string
 }

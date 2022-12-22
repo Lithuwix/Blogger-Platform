@@ -16,11 +16,13 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
+import {useAppDispatch} from "../../../common/hooks/hooks";
+import {registrationTC} from "../../../reducers/auth-reducer";
 
 type FormikErrorType = {
-    userName?: string
-    email?: string
+    login?: string
     password?: string
+    email?: string
 }
 
 export const Register = () => {
@@ -28,6 +30,8 @@ export const Register = () => {
     const [openModal, setOpenModal] = React.useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
+
+    const dispatch = useAppDispatch()
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -39,20 +43,20 @@ export const Register = () => {
 
     const formik = useFormik({
         initialValues: {
-            userName: '',
-            email: '',
-            password: ''
+            login: '',
+            password: '',
+            email: ''
         },
         validate: values => {
             const errors: FormikErrorType = {}
-            if (values.userName.length > 10) {
-                errors.userName = 'must be less than 10 symbols'
+            if (values.login.length > 10) {
+                errors.login = 'must be less than 10 symbols'
             }
-            if (values.userName.length < 4) {
-                errors.userName = 'must be more than 3 symbols'
+            if (values.login.length < 4) {
+                errors.login = 'must be more than 3 symbols'
             }
-            if (!values.userName) {
-                errors.userName = 'required'
+            if (!values.login) {
+                errors.login = 'required'
             }
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 errors.email = 'Invalid email address'
@@ -70,6 +74,7 @@ export const Register = () => {
         },
         onSubmit: values => {           // handleSubmit
                                         // dispatch(loginTC(values))
+            dispatch(registrationTC(values))
             handleOpen()
             formik.resetForm();
         },
@@ -95,14 +100,14 @@ export const Register = () => {
                                 Username
                             </InputLabel>
                             <Input
-                                {...formik.getFieldProps('userName')}
+                                {...formik.getFieldProps('login')}
                                 id="standard-adornment-username"
                                 type='text'
                             />
                         </FormControl>
 
                         <div className={s.error_titles}>
-                            {formik.touched.userName && formik.errors.userName && formik.errors.userName}
+                            {formik.touched.login && formik.errors.login && formik.errors.login}
                         </div>
 
                         <FormControl className={s.input} variant="standard">

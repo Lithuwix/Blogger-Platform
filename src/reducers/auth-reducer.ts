@@ -1,7 +1,10 @@
 import {AppThunk} from "../store/store";
-import {setAppStatusAC} from "./app-reducer";
-import {authAPI} from "../api/api";
+
 import {errorHandlerUtil} from "../common/utils/errors-utils";
+
+import {setAppStatusAC} from "./app-reducer";
+
+import {authAPI, LoginParamsType, RegisterParamsType} from "../api/api";
 
 const initialState: InitialStateType = {
     isLoggedIn: false,
@@ -47,7 +50,19 @@ export const setAppMessageForUserAC = (message: string | null) => {
 }
 
 // thunks
-export const loginTC = (data: any): AppThunk => async (dispatch) => {
+export const registrationTC = (data: RegisterParamsType): AppThunk => async (dispatch) => {
+    dispatch(setAppStatusAC('loading'))
+    try {
+        await authAPI.register(data)
+
+    } catch (e: any) {
+        errorHandlerUtil(e, dispatch)
+    } finally {
+        dispatch(setAppStatusAC('idle'))
+    }
+}
+
+export const loginTC = (data: LoginParamsType): AppThunk => async (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     try {
         await authAPI.login(data)
