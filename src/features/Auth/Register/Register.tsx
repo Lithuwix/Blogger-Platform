@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 
 import s from './Register.module.css'
 
 import {useFormik} from "formik";
+
+import {registrationTC} from "../../../reducers/auth-reducer";
+
+import {useAppDispatch, useAppSelector} from "../../../common/hooks/hooks";
 
 import {NavLink} from "react-router-dom";
 
@@ -16,8 +20,6 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
-import {useAppDispatch} from "../../../common/hooks/hooks";
-import {registrationTC} from "../../../reducers/auth-reducer";
 
 type FormikErrorType = {
     login?: string
@@ -27,12 +29,18 @@ type FormikErrorType = {
 
 export const Register = () => {
 
-    const [openModal, setOpenModal] = React.useState(false);
-    const handleOpen = () => setOpenModal(true);
-    const handleClose = () => setOpenModal(false);
-
     const dispatch = useAppDispatch()
 
+    const isRegistrationOk = useAppSelector((state) => state.auth.registerOk)
+    const userEmail = useAppSelector((state) => state.auth.userInfo.email)
+
+    //modal
+    const [openModal, setOpenModal] = React.useState(false);
+
+    const handleOpen = useCallback( () => setOpenModal(true), [] )
+    const handleClose = () => setOpenModal(false);
+
+    //password
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -72,19 +80,22 @@ export const Register = () => {
             }
             return errors
         },
-        onSubmit: values => {           // handleSubmit
-                                        // dispatch(loginTC(values))
+        onSubmit: values => {
             dispatch(registrationTC(values))
-            handleOpen()
             formik.resetForm();
         },
     });
 
-
+    useEffect(()=> {
+        debugger
+        if (isRegistrationOk) {
+            handleOpen()
+        }
+    }, [isRegistrationOk, handleOpen])
 
     return (
         <>
-            <SendEmailInfoModal openModal={openModal} handleClose={handleClose}/>
+            <SendEmailInfoModal openModal={openModal} handleClose={handleClose} userEmail={userEmail}/>
 
             <div className={s.container}>
                 <div className={s.login_wrapper}>
@@ -97,7 +108,7 @@ export const Register = () => {
                             <InputLabel
                                 className={s.input_label}
                                 htmlFor="standard-adornment-username">
-                                Username
+                                User name
                             </InputLabel>
                             <Input
                                 {...formik.getFieldProps('login')}

@@ -8,8 +8,9 @@ import {authAPI, LoginParamsType, RegisterParamsType} from "../api/api";
 
 const initialState: InitialStateType = {
     isLoggedIn: false,
-    appErrorMessage: '',
-    appMessageForUser: null
+    appMessageForUser: null,
+    registerOk: false,
+    userInfo: {} as RegisterParamsType
 }
 
 export const authReducer = (state = initialState, action: AuthActionsType): InitialStateType => {
@@ -17,11 +18,14 @@ export const authReducer = (state = initialState, action: AuthActionsType): Init
         case 'AUTH/SET-IS-LOGGED-IN' : {
             return {...state, isLoggedIn: action.payload.isLoggedIn}
         }
-        case 'AUTH/SET-APP-ERROR': {
-            return {...state, appErrorMessage: action.payload.errorMessage}
-        }
         case 'AUTH/SET-APP-MESSAGE-FOR-USER': {
             return {...state, appMessageForUser: action.payload.message}
+        }
+        case 'AUTH/SET-USER-REGISTRATION-STATUS': {
+            return {...state, registerOk: action.payload.isOk}
+        }
+        case 'AUTH/SET-USER-REGISTRATION-INFO': {
+            return {...state, userInfo: action.payload.info}
         }
         default: {
             return state
@@ -36,16 +40,22 @@ export const setIsLoggedInOutAC = (isLoggedIn: boolean) => {
         payload: {isLoggedIn}
     } as const
 }
-export const setAppErrorAC = (errorMessage: string) => {
-    return {
-        type: 'AUTH/SET-APP-ERROR',
-        payload: {errorMessage}
-    } as const
-}
 export const setAppMessageForUserAC = (message: string | null) => {
     return {
         type: 'AUTH/SET-APP-MESSAGE-FOR-USER',
         payload: {message}
+    } as const
+}
+export const setRegistrationStatusAC = (isOk: boolean) => {
+    return {
+        type: 'AUTH/SET-USER-REGISTRATION-STATUS',
+        payload: {isOk}
+    } as const
+}
+export const setRegistrationUserInfoAC = (info: any) => {
+    return {
+        type: 'AUTH/SET-USER-REGISTRATION-INFO',
+        payload: {info}
     } as const
 }
 
@@ -54,9 +64,11 @@ export const registrationTC = (data: RegisterParamsType): AppThunk => async (dis
     dispatch(setAppStatusAC('loading'))
     try {
         await authAPI.register(data)
-
+        dispatch(setRegistrationUserInfoAC(data))
+        dispatch(setRegistrationStatusAC(true))
     } catch (e: any) {
         errorHandlerUtil(e, dispatch)
+        dispatch(setRegistrationStatusAC(false))
     } finally {
         dispatch(setAppStatusAC('idle'))
     }
@@ -79,12 +91,14 @@ export const loginTC = (data: LoginParamsType): AppThunk => async (dispatch) => 
 // types
 type InitialStateType = {
     isLoggedIn: boolean
-    appErrorMessage: string
     appMessageForUser: string | null
+    registerOk: boolean
+    userInfo: RegisterParamsType
 }
 
 export type AuthActionsType =
     | ReturnType<typeof setIsLoggedInOutAC>
-    | ReturnType<typeof setAppErrorAC>
     | ReturnType<typeof setAppMessageForUserAC>
+    | ReturnType<typeof setRegistrationStatusAC>
+    | ReturnType<typeof setRegistrationUserInfoAC>
 //   |  >>> !

@@ -28,10 +28,11 @@ export const App = () => {
 
     const appStatus = useAppSelector((state) => state.app.appStatus)
     const appInitialized = useAppSelector((state) => state.app.isInitialized)
+    const message = useAppSelector(state => state.auth.appMessageForUser)
 
     useEffect(() => {
         dispatch(initializeAppTC())
-    }, [])
+    }, [dispatch])
 
     if (!appInitialized) {
         return (
@@ -63,7 +64,7 @@ export const App = () => {
 
             </div>
 
-            <MessageSnackbar/>
+            <MessageSnackbar message={message}/>
         </div>
     )
 }

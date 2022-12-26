@@ -15,7 +15,7 @@ export const RegistrationEmailResending = () => {
     return (
         <div className={s.wrapper}>
 
-            <SendEmailInfoModal openModal={openModal} handleClose={handleClose}/>
+            <SendEmailInfoModal openModal={openModal} handleClose={handleClose} userEmail={'111'}/>
 
             <h1 className={s.title}>
                 Email verification link expired

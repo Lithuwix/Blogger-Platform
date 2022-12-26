@@ -11,6 +11,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 type SendEmailInfoModalPropsType = {
     openModal: boolean
     handleClose: () => void
+    userEmail: string
 }
 
 const style = {
@@ -39,7 +40,7 @@ export const SendEmailInfoModal = (props: SendEmailInfoModalPropsType) => {
                     <hr/>
                 </Typography>
                 <Typography id="modal-modal-description" sx={{mt: 2}}>
-                    We have sent a link to confirm your email to **epam@epam.com**
+                    We have sent a link to confirm your email to {props.userEmail}
                 </Typography>
                 <Button
                     onClick={props.handleClose}

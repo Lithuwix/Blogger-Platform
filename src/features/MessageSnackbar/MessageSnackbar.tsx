@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, {AlertProps} from '@mui/material/Alert';
 
-import {useAppDispatch, useAppSelector} from "../../common/hooks/hooks";
+import {useAppDispatch} from "../../common/hooks/hooks";
 
 import {setAppMessageForUserAC} from "../../reducers/auth-reducer";
 
@@ -15,9 +15,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const MessageSnackbar = () => {
+type MessageSnackBarPropsType = {
+    message: string | null
+}
 
-    const message = useAppSelector(state => state.auth.appMessageForUser)
+export const MessageSnackbar = (props: MessageSnackBarPropsType) => {
+
     const dispatch = useAppDispatch()
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -29,13 +32,13 @@ export const MessageSnackbar = () => {
 
     return (
         <Stack spacing={2} sx={{width: '100%'}}>
-            <Snackbar open={!!message} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={!!props.message} autoHideDuration={4000} onClose={handleClose}>
                 <Alert
                     onClose={handleClose}
-                    severity={(message?.startsWith('Welcome')) ? 'success' : 'error'}
+                    severity={(props.message?.startsWith('Welcome')) ? 'success' : 'error'}
                     sx={{width: '100%'}}
                 >
-                    {message}
+                    {props.message}
                 </Alert>
             </Snackbar>
         </Stack>
