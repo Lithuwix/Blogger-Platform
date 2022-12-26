@@ -13,14 +13,14 @@ export const errorHandlerUtil = (e: any, dispatch: Dispatch<AppRootActionsType>)
         if (typeof error === 'object') {
             let temp = ''
             error.errorsMessages.map((m: any) => temp += `\n${m.message}\n`)
-            console.log(temp)
-            dispatch(setAppMessageForUserAC(temp))
+            // console.log(temp)
+            // dispatch(setAppMessageForUserAC(null))
         }
         else {
-            console.log(err.message)
+            // console.log(err.message)
         }
     }
     else {
-        console.log(`Native error ${err.message}`)
+        // console.log(`Native error ${err.message}`)
     }
 }

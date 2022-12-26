@@ -8,7 +8,7 @@ import {authAPI, LoginParamsType, RegisterParamsType} from "../api/api";
 
 const initialState: InitialStateType = {
     isLoggedIn: false,
-    appMessageForUser: null,
+    appMessageForUser: null as null,
     registerOk: false,
     userInfo: {} as RegisterParamsType
 }
@@ -81,8 +81,14 @@ export const loginTC = (data: LoginParamsType): AppThunk => async (dispatch) => 
         dispatch(setAppMessageForUserAC(`Welcome ${data.loginOrEmail}!`))
         dispatch(setIsLoggedInOutAC(true))
     } catch (e: any) {
+        // errorHandlerUtil(e, dispatch)
         dispatch(setAppMessageForUserAC('The password or email or Username is incorrect. Please try again'))
-        errorHandlerUtil(e, dispatch)
+        // if (e.response) {
+        //     dispatch(setAppMessageForUserAC('Unexpected error'))
+        // }
+        // if (e.response.status === '401') {
+        //     dispatch(setAppMessageForUserAC('The password or email or Username is incorrect. Please try again'))
+        // }
     } finally {
         dispatch(setAppStatusAC('idle'))
     }
