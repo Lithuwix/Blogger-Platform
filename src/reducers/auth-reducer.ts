@@ -69,6 +69,21 @@ export const registrationTC = (data: RegisterParamsType): AppThunk => async (dis
     } catch (e: any) {
         errorHandlerUtil(e, dispatch)
         dispatch(setRegistrationStatusAC(false))
+        if (e.response.status === 0) {
+            dispatch(setAppMessageForUserAC('Network Error'))
+        }
+        else if (e.response.data.errorsMessages.length === 2) {
+            dispatch(setAppMessageForUserAC('User with this UserName and Email already exists'))
+        }
+        else if (e.response.data.errorsMessages[0].field === "login") {
+            dispatch(setAppMessageForUserAC('User with this UserName already exists'))
+        }
+        else if (e.response.data.errorsMessages[0].field === "email") {
+            dispatch(setAppMessageForUserAC('User with this Email already exists'))
+        }
+        else {
+            dispatch(setAppMessageForUserAC('Unexpected error'))
+        }
     } finally {
         dispatch(setAppStatusAC('idle'))
     }
@@ -81,14 +96,14 @@ export const loginTC = (data: LoginParamsType): AppThunk => async (dispatch) => 
         dispatch(setAppMessageForUserAC(`Welcome ${data.loginOrEmail}!`))
         dispatch(setIsLoggedInOutAC(true))
     } catch (e: any) {
-        // errorHandlerUtil(e, dispatch)
-        dispatch(setAppMessageForUserAC('The password or email or Username is incorrect. Please try again'))
-        // if (e.response) {
-        //     dispatch(setAppMessageForUserAC('Unexpected error'))
-        // }
-        // if (e.response.status === '401') {
-        //     dispatch(setAppMessageForUserAC('The password or email or Username is incorrect. Please try again'))
-        // }
+        errorHandlerUtil(e, dispatch)
+        console.log(e)
+        if (e.response.status === 0) {
+            dispatch(setAppMessageForUserAC('Network Error'))
+        }
+        else {
+            dispatch(setAppMessageForUserAC('The password or email or Username is incorrect. Please try again'))
+        }
     } finally {
         dispatch(setAppStatusAC('idle'))
     }

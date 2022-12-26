@@ -87,7 +87,6 @@ export const Register = () => {
     });
 
     useEffect(()=> {
-        debugger
         if (isRegistrationOk) {
             handleOpen()
         }

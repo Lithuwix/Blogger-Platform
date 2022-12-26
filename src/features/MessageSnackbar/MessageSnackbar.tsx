@@ -16,7 +16,6 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 export const MessageSnackbar = () => {
-    debugger
 
     const dispatch = useAppDispatch()
     const message = useAppSelector(state => state.auth.appMessageForUser)
