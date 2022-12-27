@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from "axios";
 
 export const instance = axios.create({
     baseURL: 'https://blogs-black.vercel.app',
-    // withCredentials: true
+    withCredentials: true
 })
 
 export const authAPI = {

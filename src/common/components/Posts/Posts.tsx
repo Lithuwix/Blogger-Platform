@@ -16,7 +16,9 @@ export const Posts = () => {
     const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
 
     useEffect(() => {
-        dispatch(getPostsTC())
+        if (isLoggedIn) {
+            dispatch(getPostsTC())
+        }
     }, [dispatch])
 
     if (!isLoggedIn) {

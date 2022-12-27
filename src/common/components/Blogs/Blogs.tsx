@@ -17,7 +17,9 @@ export const Blogs = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getBlogsTC())
+        if (isLoggedIn) {
+            dispatch(getBlogsTC())
+        }
     }, [dispatch])
 
     if (!isLoggedIn) {
