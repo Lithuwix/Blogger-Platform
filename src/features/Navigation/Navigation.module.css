@@ -1,5 +1,5 @@
 .container {
-    width: 18%;
+    width: 250px;
     position: relative;
     background-color: #FCFBFB;
     font-size: 1.5rem;
@@ -32,4 +32,10 @@
 
 .posts_active_title {
     color: #F8346B;
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: none;
+    }
 }

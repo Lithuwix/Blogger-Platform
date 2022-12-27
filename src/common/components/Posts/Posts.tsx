@@ -6,15 +6,22 @@ import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {Post} from "./Post/Post";
 import {getPostsTC} from "../../../reducers/posts-reducer";
 import {Navigation} from "../../../features/Navigation/Navigation";
+import {Navigate} from "react-router-dom";
 
 export const Posts = () => {
 
-    const data = useAppSelector((state) => state.posts.items)
     const dispatch = useAppDispatch()
+
+    const data = useAppSelector((state) => state.posts.items)
+    const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
 
     useEffect(() => {
         dispatch(getPostsTC())
-    }, [])
+    }, [dispatch])
+
+    if (!isLoggedIn) {
+        return <Navigate to={'/login'}/>
+    }
 
     return (
         <>
@@ -29,7 +36,7 @@ export const Posts = () => {
                                 key={el.id}
                                 title={el.title}
                                 shortDescription={el.shortDescription}
-                                createdAt={el.createdAt.replace(/^(\d+)\-(\d+)\-(\d+)\D.+$/, '$3.$2.$1')}
+                                createdAt={el.createdAt.replace(/^(\d+)-(\d+)-(\d+)\D.+$/, '$3.$2.$1')}
                             />
                         )
                     })}

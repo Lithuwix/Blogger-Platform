@@ -18,7 +18,7 @@ export const Blogs = () => {
 
     useEffect(() => {
         dispatch(getBlogsTC())
-    }, [])
+    }, [dispatch])
 
     if (!isLoggedIn) {
         return <Navigate to={'/login'}/>
