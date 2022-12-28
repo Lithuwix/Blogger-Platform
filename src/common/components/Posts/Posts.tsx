@@ -19,7 +19,7 @@ export const Posts = () => {
         if (isLoggedIn) {
             dispatch(getPostsTC())
         }
-    }, [dispatch])
+    }, [dispatch, isLoggedIn])
 
     if (!isLoggedIn) {
         return <Navigate to={'/login'}/>

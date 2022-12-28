@@ -20,7 +20,7 @@ export const Blogs = () => {
         if (isLoggedIn) {
             dispatch(getBlogsTC())
         }
-    }, [dispatch])
+    }, [dispatch, isLoggedIn])
 
     if (!isLoggedIn) {
         return <Navigate to={'/login'}/>
