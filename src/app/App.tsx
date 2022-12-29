@@ -21,6 +21,7 @@ import {MessageSnackbar} from "../features/MessageSnackbar/MessageSnackbar";
 
 import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from "@mui/material/CircularProgress";
+import {authMeTC} from "../reducers/auth-reducer";
 
 export const App = () => {
 
@@ -31,6 +32,7 @@ export const App = () => {
 
     useEffect(() => {
         dispatch(initializeAppTC())
+        dispatch(authMeTC())
     }, [dispatch])
 
     if (!appInitialized) {
@@ -53,12 +55,12 @@ export const App = () => {
                     <Route path={'/login'} element={<Login/>}/>
                     <Route path={'/register'} element={<Register/>}/>
                     <Route path={'/registration-email-resending'} element={<RegistrationEmailResending/>}/>
-                    <Route path={'/registration-confirmation'} element={<RegistrationConfirmation/>}/>
+                    <Route path={'/registration-confirmation/:code'} element={<RegistrationConfirmation/>}/>
                     <Route path={'/blogs'} element={<Blogs/>}/>
                     <Route path={'/posts'} element={<Posts/>}/>
 
                     <Route path={'/error404'} element={<Error404/>}/>
-                    <Route path={'*'} element={<Navigate to={'/error404'}/>}/>
+                    {/*<Route path={'*'} element={<Navigate to={'/error404'}/>}/>*/}
                 </Routes>
 
             </div>

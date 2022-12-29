@@ -3,10 +3,14 @@ import React, {useEffect} from 'react';
 import s from './Posts.module.css'
 
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {Post} from "./Post/Post";
+
 import {getPostsTC} from "../../../reducers/posts-reducer";
-import {Navigation} from "../../../features/Navigation/Navigation";
+
 import {Navigate} from "react-router-dom";
+
+import {Post} from "./Post/Post";
+import {Navigation} from "../../../features/Navigation/Navigation";
+
 
 export const Posts = () => {
 

@@ -8,7 +8,7 @@ import {registrationTC} from "../../../reducers/auth-reducer";
 
 import {useAppDispatch, useAppSelector} from "../../../common/hooks/hooks";
 
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 
 import {SendEmailInfoModal} from "../../Modals/SendEmailInfoModal/SendEmailInfoModal";
 
@@ -32,7 +32,8 @@ export const Register = () => {
     const dispatch = useAppDispatch()
 
     const isRegistrationOk = useAppSelector((state) => state.auth.registerOk)
-    const userEmail = useAppSelector((state) => state.auth.userInfo.email)
+    const userEmail = useAppSelector((state) => state.auth.userRegisterInfo.email)
+    const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
 
     //modal
     const [openModal, setOpenModal] = React.useState(false);
@@ -91,6 +92,10 @@ export const Register = () => {
             handleOpen()
         }
     }, [isRegistrationOk, handleOpen])
+
+    if (isLoggedIn) {
+        return <Navigate to={'/blogs'}/>
+    }
 
     return (
         <>
