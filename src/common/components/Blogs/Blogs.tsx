@@ -7,7 +7,11 @@ import {Blog} from "./Blog/Blog";
 import {Navigation} from "../../../features/Navigation/Navigation";
 
 import {getBlogsTC} from "../../../reducers/blogs-reducer";
+
 import {Navigate} from "react-router-dom";
+
+import {SearchInput} from "../../../features/SearchInput/SearchInput";
+import {SortSelect} from "../../../features/SortSelect/SortSelect";
 
 export const Blogs = () => {
 
@@ -32,6 +36,10 @@ export const Blogs = () => {
             <div className={s.container}>
                 <h2 className={s.title}>Blogs</h2>
                 <hr className={s.line}/>
+                <div className={s.search_sort_wrapper}>
+                    <SearchInput/>
+                    <SortSelect/>
+                </div>
                 <div className={s.blogs_items_container}>
                     {blogs.map((b) => {
                         return (

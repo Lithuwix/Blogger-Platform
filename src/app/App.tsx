@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 import s from './App.module.css';
 
-import {Navigate, Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes, useLocation} from 'react-router-dom';
 
 import {useAppDispatch, useAppSelector} from "../common/hooks/hooks";
 
@@ -21,7 +21,7 @@ import {MessageSnackbar} from "../features/MessageSnackbar/MessageSnackbar";
 
 import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from "@mui/material/CircularProgress";
-import {authMeTC} from "../reducers/auth-reducer";
+import {authMeTC, registrationConfirmationTC} from "../reducers/auth-reducer";
 
 export const App = () => {
 
@@ -29,6 +29,8 @@ export const App = () => {
 
     const appStatus = useAppSelector((state) => state.app.appStatus)
     const appInitialized = useAppSelector((state) => state.app.isInitialized)
+
+    const location = useLocation()
 
     useEffect(() => {
         dispatch(initializeAppTC())
@@ -41,6 +43,11 @@ export const App = () => {
                 <CircularProgress className={s.progress_bar}/>
             </div>
         )
+    }
+
+    if (location.pathname === '/registration-confirmation/confirm-email') {
+        const code = location.search.slice(6)
+        dispatch(registrationConfirmationTC({code}))
     }
 
     return (
@@ -60,7 +67,7 @@ export const App = () => {
                     <Route path={'/posts'} element={<Posts/>}/>
 
                     <Route path={'/error404'} element={<Error404/>}/>
-                    {/*<Route path={'*'} element={<Navigate to={'/error404'}/>}/>*/}
+                    <Route path={'*'} element={<Navigate to={'/error404'}/>}/>
                 </Routes>
 
             </div>

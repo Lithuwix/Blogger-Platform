@@ -4,8 +4,9 @@ import {errorHandlerUtil} from "../common/utils/errors-utils";
 
 import {setAppStatusAC} from "./app-reducer";
 
-import {authAPI, LoginParamsType, RegisterParamsType, ResponseAuthMeType} from "../api/api";
 import {AxiosResponse} from "axios";
+
+import {authAPI, LoginParamsType, RegisterParamsType, ResponseAuthMeType} from "../api/api";
 
 const initialState: InitialStateType = {
     isLoggedIn: false,
@@ -130,9 +131,9 @@ export const loginTC = (data: LoginParamsType): AppThunk => async (dispatch) => 
 export const registrationConfirmationTC = (data: any): AppThunk => async (dispatch) => {
     try {
         await authAPI.confirmRegistration(data)
-        console.log(data)
     } catch (e: any) {
-
+        // написать тут логику для ситуации, в которой ссылка на почте протухла
+        dispatch(setAppMessageForUserAC('Something wrong'))
     }
 }
 

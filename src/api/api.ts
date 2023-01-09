@@ -10,7 +10,6 @@ export const instance = axios.create({
 export const authAPI = {
     register(data: RegisterParamsType) {
         return instance.post<RegisterParamsType, AxiosResponse>('/auth/registration', data)
-    //    /////////////////////////////////// type fix it later plz
     },
     authMe() {
         return instance.get<ResponseAuthMeType>('/auth/me')
