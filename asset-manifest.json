@@ -1,18 +1,25 @@
 {
   "files": {
-    "main.css": "/Blogger-Platform/static/css/main.4e4d2ff3.css",
-    "main.js": "/Blogger-Platform/static/js/main.2f9e367e.js",
+    "main.css": "/Blogger-Platform/static/css/main.658eeadf.css",
+    "main.js": "/Blogger-Platform/static/js/main.d3ab3007.js",
     "static/js/787.b2afa05d.chunk.js": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js",
+    "static/media/5.jpg": "/Blogger-Platform/static/media/5.2761678cdfab5f1ddcc7.jpg",
+    "static/media/4.jpg": "/Blogger-Platform/static/media/4.a0603da1742b8b2efd92.jpg",
+    "static/media/3.jpg": "/Blogger-Platform/static/media/3.0c777a1f40ab169460aa.jpg",
+    "static/media/2.jpg": "/Blogger-Platform/static/media/2.ad03411f7d8a9cbe6e79.jpg",
+    "static/media/6.jpg": "/Blogger-Platform/static/media/6.8b14e4ea7c8d44be9a79.jpg",
+    "static/media/0.jpg": "/Blogger-Platform/static/media/0.48f71f5abfd4674b5bd0.jpg",
+    "static/media/1.jpg": "/Blogger-Platform/static/media/1.8969ec474922ef003353.jpg",
     "static/media/rafiki.png": "/Blogger-Platform/static/media/rafiki.d46a9aaf46dca6773cbe.png",
     "static/media/rafiki2.png": "/Blogger-Platform/static/media/rafiki2.f96627988a6d5f6e5f17.png",
     "static/media/bro.png": "/Blogger-Platform/static/media/bro.c43ba54fe8ed1e97b74e.png",
     "index.html": "/Blogger-Platform/index.html",
-    "main.4e4d2ff3.css.map": "/Blogger-Platform/static/css/main.4e4d2ff3.css.map",
-    "main.2f9e367e.js.map": "/Blogger-Platform/static/js/main.2f9e367e.js.map",
+    "main.658eeadf.css.map": "/Blogger-Platform/static/css/main.658eeadf.css.map",
+    "main.d3ab3007.js.map": "/Blogger-Platform/static/js/main.d3ab3007.js.map",
     "787.b2afa05d.chunk.js.map": "/Blogger-Platform/static/js/787.b2afa05d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e4d2ff3.css",
-    "static/js/main.2f9e367e.js"
+    "static/css/main.658eeadf.css",
+    "static/js/main.d3ab3007.js"
   ]
 }
