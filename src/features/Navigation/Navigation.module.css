@@ -1,6 +1,6 @@
 .container {
-    width: 250px;
-    position: relative;
+    box-sizing: border-box;
+    width: 300px!important;
     background-color: #FCFBFB;
     font-size: 1.5rem;
     padding: 50px 30px;

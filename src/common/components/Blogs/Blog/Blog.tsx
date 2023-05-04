@@ -1,18 +1,35 @@
 import React from 'react';
+
 import s from "./Blog.module.css"
+import "../../../utils/stylesForImages.css"
 
-import {SvgSelector} from "../../../../features/svgSelector/svgSelector";
-import {BlogItemType} from "../../../../api/api";
+import {NavLink} from "react-router-dom";
 
-export const Blog = (props: BlogItemType) => {
+type BlogPropsType = {
+    id: string
+    name: string
+    websiteUrl: string
+    description: string
+    createdAt: string,
+    getRandomFromArr: () => number
+}
+
+const BlogFC = (props: BlogPropsType) => {
+
+    const randomClass = `random_${props.getRandomFromArr()}`
+
     return (
         <div className={s.wrapper}>
             <div className={s.container}>
-                <div>
-                    <div className={s.blog_img}><SvgSelector svgName='photo'/></div>
-                </div>
+                <NavLink to={`:${props.id}`}>
+                    <div className={`${s.blog_img} ${randomClass}`}>
+                        {/*<SvgSelector svgName='photo'/>*/}
+                    </div>
+                </NavLink>
                 <div className={s.blog_info}>
-                    <h3 className={s.blog_title}>{props.name}</h3>
+                    <NavLink to={`:${props.id}`}>
+                        <h3 className={s.blog_title}>{props.name}</h3>
+                    </NavLink>
                     <p className={s.side_link}>
                         WebSite: <a href={props.websiteUrl} target='_blank' rel="noreferrer">{props.websiteUrl}</a>
                     </p>
@@ -24,3 +41,4 @@ export const Blog = (props: BlogItemType) => {
     );
 };
 
+export const Blog = React.memo(BlogFC)

@@ -19,15 +19,15 @@ import {Error404} from "../features/Error404/Error404";
 
 import {MessageSnackbar} from "../features/MessageSnackbar/MessageSnackbar";
 
-import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from "@mui/material/CircularProgress";
 import {authMeTC, registrationConfirmationTC} from "../reducers/auth-reducer";
+import {CurrentBlog} from "../common/components/Blogs/CurrentBlog/CurrentBlog";
+import {CurrentPost} from "../common/components/Posts/CurrentPost/CurrentPost";
 
 export const App = () => {
 
     const dispatch = useAppDispatch()
 
-    const appStatus = useAppSelector((state) => state.app.appStatus)
     const appInitialized = useAppSelector((state) => state.app.isInitialized)
 
     const location = useLocation()
@@ -53,8 +53,6 @@ export const App = () => {
     return (
         <div>
             <Header/>
-            {appStatus === 'loading' && <LinearProgress color="inherit"/>}
-
             <div className={s.app_container}>
 
                 <Routes>
@@ -63,11 +61,15 @@ export const App = () => {
                     <Route path={'/register'} element={<Register/>}/>
                     <Route path={'/registration-email-resending'} element={<RegistrationEmailResending/>}/>
                     <Route path={'/registration-confirmation/:code'} element={<RegistrationConfirmation/>}/>
+
                     <Route path={'/blogs'} element={<Blogs/>}/>
+                    <Route path={'/blogs/:blogID'} element={<CurrentBlog/>}/>
+
                     <Route path={'/posts'} element={<Posts/>}/>
+                    <Route path={'/posts/:postID'} element={<CurrentPost/>}/>
 
                     <Route path={'/error404'} element={<Error404/>}/>
-                    <Route path={'*'} element={<Navigate to={'/error404'}/>}/>
+                    {/*<Route path={'*'} element={<Navigate to={'/error404'}/>}/>*/}
                 </Routes>
 
             </div>

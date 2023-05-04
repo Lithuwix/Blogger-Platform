@@ -1,11 +1,41 @@
 .post_wrapper {
-    width: 300px;
-    height: 300px;  /* */
-    border: 1px solid pink;
+    box-sizing: border-box;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.post_img {
+    margin: 20px 0;
+    background-color: white;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post_user_pic {
+    margin-right: 15px;
+}
+
+.post_title {
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.post_date {
+    font-size: 14px;
+    font-weight: 300;
+    padding-top: 10px;
 }
 
 .post_info {
     display: flex;
-    border: 1px solid #2db5b9;
 }
 
+@media (max-width: 500px) {
+    .post_img {
+        height: 150px;
+    }
+}

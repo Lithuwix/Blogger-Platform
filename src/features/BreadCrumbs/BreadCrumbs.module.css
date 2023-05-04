@@ -1,0 +1,31 @@
+.container {
+    user-select: none;
+    display: flex;
+    align-items: baseline;
+}
+
+.title {
+    padding: 10px 20px 0;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+.way_wrapper {
+    display: flex;
+    align-items: baseline;
+    padding-right: 15px;
+}
+
+.separator {
+    font-weight: 600;
+    color: rgba(61, 61, 61, 0.45);
+    font-size: 1.5rem;
+    padding-right: 5px;
+}
+
+.way {
+    line-height: 100px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: rgba(61, 61, 61, 0.59);
+}

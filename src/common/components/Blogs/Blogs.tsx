@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
+
 import s from './Blogs.module.css'
 
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
@@ -12,8 +13,10 @@ import {Navigate} from "react-router-dom";
 
 import {SearchInput} from "../../../features/SearchInput/SearchInput";
 import {SortSelect} from "../../../features/SortSelect/SortSelect";
+import {getRandomFromArr} from "../../utils/temp-images-utils";
+import {BasicBreadcrumbs} from "../../../features/BreadCrumbs/BreadCrumbs";
 
-export const Blogs = () => {
+const BlogsFC = () => {
 
     const blogs = useAppSelector((state) => state.blogs.items)
     const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
@@ -26,6 +29,12 @@ export const Blogs = () => {
         }
     }, [dispatch, isLoggedIn])
 
+    const numsForBlogs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+    const getRandomFromArrHandler = useCallback(() => {
+        return getRandomFromArr(numsForBlogs)
+    }, [])
+
     if (!isLoggedIn) {
         return <Navigate to={'/login'}/>
     }
@@ -34,7 +43,7 @@ export const Blogs = () => {
         <>
             <Navigation activeLink='blogs'/>
             <div className={s.container}>
-                <h2 className={s.title}>Blogs</h2>
+                <BasicBreadcrumbs basePath='Blogs'/>
                 <hr className={s.line}/>
                 <div className={s.search_sort_wrapper}>
                     <SearchInput/>
@@ -45,6 +54,7 @@ export const Blogs = () => {
                         return (
                             <Blog
                                 key={b.id}
+                                getRandomFromArr={getRandomFromArrHandler}
                                 description={b.description}
                                 id={b.id}
                                 name={b.name}
@@ -59,3 +69,4 @@ export const Blogs = () => {
     );
 };
 
+export const Blogs = React.memo(BlogsFC)

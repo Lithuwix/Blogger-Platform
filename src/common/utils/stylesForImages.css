@@ -1,3 +1,5 @@
+/* for blogs */
+
 .random_0 {
     background: url("/src/assets/images/temp/0.jpg") no-repeat;
     background-size: cover;
@@ -60,5 +62,53 @@
 }
 .random_15 {
     background: url("/src/assets/images/temp/15.jpg") no-repeat;
+    background-size: cover;
+}
+
+/* for posts */
+
+.random_20 {
+    background: url("/src/assets/images/temp/20.jpg") no-repeat;
+    background-size: cover;
+}
+
+.random_21 {
+    background: url("/src/assets/images/temp/21.jpg") no-repeat;
+    background-size: cover;
+}
+.random_22 {
+    background: url("/src/assets/images/temp/22.jpg") no-repeat;
+    background-size: cover;
+}
+.random_23 {
+    background: url("/src/assets/images/temp/23.jpg") no-repeat;
+    background-size: cover;
+}
+.random_24 {
+    background: url("/src/assets/images/temp/24.jpg") no-repeat;
+    background-size: cover;
+}
+.random_25 {
+    background: url("/src/assets/images/temp/25.jpg") no-repeat;
+    background-size: cover;
+}
+.random_26 {
+    background: url("/src/assets/images/temp/26.jpg") no-repeat;
+    background-size: cover;
+}
+.random_27 {
+    background: url("/src/assets/images/temp/27.jpg") no-repeat;
+    background-size: cover;
+}
+.random_28 {
+    background: url("/src/assets/images/temp/28.jpg") no-repeat;
+    background-size: cover;
+}
+.random_29 {
+    background: url("/src/assets/images/temp/29.jpg") no-repeat;
+    background-size: cover;
+}
+.random_30 {
+    background: url("/src/assets/images/temp/30.jpg") no-repeat;
     background-size: cover;
 }

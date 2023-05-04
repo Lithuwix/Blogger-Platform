@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 
 import s from './Posts.module.css'
 
@@ -10,14 +10,20 @@ import {Navigate} from "react-router-dom";
 
 import {Post} from "./Post/Post";
 import {Navigation} from "../../../features/Navigation/Navigation";
+import {getRandomFromArr} from "../../utils/temp-images-utils";
 
-
-export const Posts = () => {
-
-    const dispatch = useAppDispatch()
+const PostsFC = () => {
 
     const data = useAppSelector((state) => state.posts.items)
     const isLoggedIn = useAppSelector(((state) => state.auth.isLoggedIn))
+
+    const dispatch = useAppDispatch()
+
+    const numsForPosts = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+
+    const getRandomFromArrHandler = useCallback(() => {
+        return getRandomFromArr(numsForPosts)
+    }, [])
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -40,8 +46,10 @@ export const Posts = () => {
                         return (
                             <Post
                                 key={el.id}
+                                postID={el.id}
+                                getRandomFromArr={getRandomFromArrHandler}
                                 title={el.title}
-                                shortDescription={el.shortDescription}
+                                blogTitle={el.blogName}
                                 createdAt={el.createdAt.replace(/^(\d+)-(\d+)-(\d+)\D.+$/, '$3.$2.$1')}
                             />
                         )
@@ -52,3 +60,4 @@ export const Posts = () => {
     );
 };
 
+export const Posts = React.memo(PostsFC)

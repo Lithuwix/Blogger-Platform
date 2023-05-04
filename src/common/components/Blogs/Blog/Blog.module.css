@@ -22,10 +22,10 @@
     height: 156px;
     width: 156px;
     border-radius: 100px;
-    border: 2px solid rgba(180, 180, 180, 0.32);
+    /*border: 2px solid rgba(180, 180, 180, 0.32);*/
 }
 .blog_info{
-    margin: 0 0 0 12px;
+    margin: 15px 0 0 25px;
     overflow: hidden;
 }
 
@@ -57,4 +57,12 @@
     .container {
         flex-direction: column;
     }
+}
+
+
+/* styles for images */
+
+.random_0 {
+    background-color: #F8346B!important;
+    color: #2db5b9!important;
 }
